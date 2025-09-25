@@ -10,6 +10,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/dishes")
+@CrossOrigin(origins = "*")
+
 public class DishController {
 
     @Autowired
