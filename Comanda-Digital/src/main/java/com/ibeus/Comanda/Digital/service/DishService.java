@@ -30,7 +30,6 @@ public class DishService {
         dish.setName(dishDetails.getName());
         dish.setDescription(dishDetails.getDescription());
         dish.setPrice(dishDetails.getPrice());
-        dish.setImageUrl(dishDetails.getImageUrl());
         return dishRepository.save(dish);
     }
 
