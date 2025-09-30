@@ -9,7 +9,7 @@ import com.ibeus.Comanda.Digital.service.OrderService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/comanda-digital")
 @CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 

@@ -9,8 +9,13 @@ import com.ibeus.Comanda.Digital.service.DishService;
 import java.util.List;
 
 @RestController
+<<<<<<< HEAD
 @RequestMapping("/dishes")
 @CrossOrigin(origins = "*")
+=======
+@RequestMapping("/api/dishes")
+@CrossOrigin(origins = "http://localhost:4200")
+>>>>>>> 414d398 (att do codigo parte comunicação do back e front)
 
 public class DishController {
 
