@@ -22,6 +22,13 @@ public class Dish {
 
     private Double price;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    private String ImageUrl;
+}
+=======
+>>>>>>> ba8d1b6c003708c2d253d7c4d929a9354ce46238
     private String imageUrl;
 
     public Long getId() {
@@ -64,4 +71,8 @@ public class Dish {
         this.imageUrl = imageUrl;
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 414d398 (att do codigo parte comunicação do back e front)
+>>>>>>> ba8d1b6c003708c2d253d7c4d929a9354ce46238
