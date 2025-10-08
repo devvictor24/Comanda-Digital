@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.ibeus.Comanda.Digital.model.*;
 import com.ibeus.Comanda.Digital.repository.OrderRepository;
 import com.ibeus.Comanda.Digital.repository.DishRepository;
+import java.math.BigDecimal;
 
 import java.util.List;
 
@@ -26,17 +27,25 @@ public class OrderService {
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
     }
 
-    public Order create(List<Long> dishIds, PaymentMethod paymentMethod) {
-        List<Dish> dishes = dishRepository.findAllById(dishIds);
-
-        double total = dishes.stream().mapToDouble(Dish::getPrice).sum();
-
+    public Order create(List<OrderDishRequest> items, PaymentMethod paymentMethod) {
         Order order = new Order();
-        order.setDishes(dishes);
-        order.setTotalPrice(total);
-        order.setPaymentMethod(paymentMethod);
         order.setStatus(OrderStatus.PENDING);
+        order.setPaymentMethod(paymentMethod);
 
+        BigDecimal total = BigDecimal.ZERO;
+        List<OrderItem> orderItems = new java.util.ArrayList<>();
+        for (OrderDishRequest item : items) {
+            Dish dish = dishRepository.findById(item.getDishId())
+                    .orElseThrow(() -> new RuntimeException("Prato não encontrado: " + item.getDishId()));
+            OrderItem orderItem = new OrderItem();
+            orderItem.setDish(dish);
+            orderItem.setOrder(order);
+            orderItem.setQuantity(item.getQuantity());
+            orderItems.add(orderItem);
+            total = total.add(dish.getPrice().multiply(BigDecimal.valueOf(item.getQuantity())));
+        }
+        order.setOrderItems(orderItems);
+        order.setTotalPrice(total);
         return orderRepository.save(order);
     }
 
