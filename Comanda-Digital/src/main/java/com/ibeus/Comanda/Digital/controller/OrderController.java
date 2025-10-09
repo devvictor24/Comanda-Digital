@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ibeus.Comanda.Digital.model.*;
+import com.ibeus.Comanda.Digital.model.OrderRequest;
+import com.ibeus.Comanda.Digital.model.OrderStatus;
 import com.ibeus.Comanda.Digital.service.OrderService;
 
 import java.util.List;
@@ -31,7 +33,7 @@ public class OrderController {
 
     @PostMapping
     public Order createOrder(@RequestBody OrderRequest request) {
-        return orderService.create(request.getDishIds(), request.getPaymentMethod());
+        return orderService.create(request.getItems(), request.getPaymentMethod());
     }
 
 

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "dishes")
 @Data
@@ -20,9 +22,19 @@ public class Dish {
 
     private String description;
 
-    private Double price;
+    private BigDecimal price;
 
     private String ImageUrl;
+    
+    private Integer quantity;
+    
+    public Integer getQuantity() {
+		return quantity;
+	}
+    
+    public void setQuantity(Integer quantity) {
+    	this.quantity = quantity;
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +60,11 @@ public class Dish {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -64,4 +76,3 @@ public class Dish {
         ImageUrl = imageUrl;
     }
 }
-
