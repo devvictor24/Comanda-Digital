@@ -79,20 +79,20 @@ mvn spring-boot:run
 
 ---
 
-Console H2
+Console Mysql
 
 Acesso:
 
 ```
-http://localhost:8080/h2-console
+http://localhost:8080/mysql-console
 ```
 
 Credenciais padrão:
 
 ```
-JDBC URL: jdbc:h2:mem:comanda
-User: sa
-Password: 
+JDBC URL: jdbc:mysql:mem:comanda
+User: root
+Password: root
 ```
 
 ---
