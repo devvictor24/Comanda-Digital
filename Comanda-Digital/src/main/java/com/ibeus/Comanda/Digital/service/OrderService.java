@@ -7,8 +7,10 @@ import com.ibeus.Comanda.Digital.repository.OrderRepository;
 import com.ibeus.Comanda.Digital.repository.DishRepository;
 import java.math.BigDecimal;
 
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import java.util.List;
 
 @Service
@@ -62,8 +64,10 @@ public class OrderService {
         order.setStatus(OrderStatus.CANCELED);
         orderRepository.save(order);
     }
+
     public String getLocalDateTime() { // <-- MUDANÇA: Agora retorna String
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         return LocalDateTime.now().format(formatter);
     }
+
 }

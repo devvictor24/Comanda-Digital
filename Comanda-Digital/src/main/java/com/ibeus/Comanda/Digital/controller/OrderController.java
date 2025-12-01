@@ -19,6 +19,7 @@ import java.util.List;
 public class OrderController {
 
 
+
     private final OrderService orderService;
 
     public OrderController(OrderService orderService) {
@@ -53,7 +54,7 @@ public class OrderController {
     public Order updateStatus(
             @PathVariable Long id,
             @RequestParam("status") OrderStatus status) {
-        return orderService.updateStatus(id, status);
+      return orderService.updateStatus(id, status);
     }
 
     @Operation(summary = "Cancelar comanda", description = "Remove uma comanda digital existente do sistema pelo ID.")
