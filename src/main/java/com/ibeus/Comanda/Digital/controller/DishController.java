@@ -12,8 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/dishes")
-@CrossOrigin(origins = "http://localhost:4200")
-@Tag(name = "Dish Controller", description = "Gerencia os pratos disponíveis no cardápio")
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "https://*.onrender.com",
+        "https://*.vercel.app",
+        "https://*.netlify.app"
+})@Tag(name = "Dish Controller", description = "Gerencia os pratos disponíveis no cardápio")
 public class DishController {
 
     @Autowired

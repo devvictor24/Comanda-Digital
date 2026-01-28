@@ -42,7 +42,6 @@ public class OrderControllerTest {
         dish.setQuantity(10);
         dish = dishRepository.save(dish);
 
-        // Monta o pedido com quantidade 2
         OrderDishRequest item = new OrderDishRequest();
         item.setDishId(dish.getId());
         item.setQuantity(2);
@@ -50,14 +49,13 @@ public class OrderControllerTest {
         orderRequest.setItems(List.of(item));
         orderRequest.setPaymentMethod(PaymentMethod.CASH);
 
-        // Envia requisição para criar pedido
+
         MvcResult result = mockMvc.perform(post("/api/comanda-digital")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(orderRequest)))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        // Valida o retorno
         String response = result.getResponse().getContentAsString();
         Order order = objectMapper.readValue(response, Order.class);
         Assertions.assertNotNull(order.getId());
